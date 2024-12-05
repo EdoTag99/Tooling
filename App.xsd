@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="urn:schemas-microsoft-com:asm.v1" />
+	<xs:element name="configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="configSections">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="section">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required" />
+									<xs:attribute name="type" type="xs:string" use="required" />
+									<xs:attribute name="requirePermission" type="xs:boolean" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="startup">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="supportedRuntime">
+								<xs:complexType>
+									<xs:attribute name="version" type="xs:string" use="required" />
+									<xs:attribute name="sku" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="runtime">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element xmlns:q1="urn:schemas-microsoft-com:asm.v1" ref="q1:assemblyBinding" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="entityFramework">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="providers">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="provider">
+											<xs:complexType>
+												<xs:attribute name="invariantName" type="xs:string" use="required" />
+												<xs:attribute name="type" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="system.data">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DbProviderFactories">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:choice maxOccurs="unbounded">
+											<xs:element name="remove">
+												<xs:complexType>
+													<xs:attribute name="invariant" type="xs:string" use="required" />
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="add">
+												<xs:complexType>
+													<xs:attribute name="name" type="xs:string" use="required" />
+													<xs:attribute name="invariant" type="xs:string" use="required" />
+													<xs:attribute name="description" type="xs:string" use="required" />
+													<xs:attribute name="type" type="xs:string" use="required" />
+												</xs:complexType>
+											</xs:element>
+										</xs:choice>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="toolingConfig">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ServiceConfiguration">
+								<xs:complexType>
+									<xs:attribute name="BaseUrl" type="xs:string" use="required" />
+									<xs:attribute name="Port" type="xs:unsignedShort" use="required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="JsonRecipeConfiguration">
+								<xs:complexType>
+									<xs:attribute name="FolderPath" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="DataBaseConfiguration">
+								<xs:complexType>
+									<xs:attribute name="ConnectionString" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SQLiteConfiguration">
+								<xs:complexType>
+									<xs:attribute name="SQLiteConnectionString" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PressCollection">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="PressInstance">
+											<xs:complexType>
+												<xs:attribute name="Id" type="xs:unsignedByte" use="required" />
+												<xs:attribute name="PressBar" type="xs:unsignedShort" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MagazineCollection">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="MagazineInstance">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="MagazineToolCollection">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element maxOccurs="unbounded" name="MagazineToolInstance">
+																	<xs:complexType>
+																		<xs:attribute name="Id" type="xs:unsignedByte" use="required" />
+																		<xs:attribute name="Width" type="xs:unsignedByte" use="required" />
+																		<xs:attribute name="Count" type="xs:unsignedByte" use="required" />
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="Id" type="xs:unsignedByte" use="required" />
+												<xs:attribute name="FileLoader" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RecipeCollection">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="RecipeInstance">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ToolCollection">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element maxOccurs="unbounded" name="ToolInstance">
+																	<xs:complexType>
+																		<xs:attribute name="Id" type="xs:unsignedByte" use="required" />
+																		<xs:attribute name="Width" type="xs:unsignedByte" use="required" />
+																		<xs:attribute name="Position" type="xs:unsignedShort" use="required" />
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="Id" type="xs:unsignedByte" use="required" />
+												<xs:attribute name="RecipeName" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
